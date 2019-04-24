@@ -8,8 +8,11 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 import android.view.View;
 
@@ -42,6 +45,23 @@ public class MainActivity extends AppCompatActivity {
         date.setText(currentDate);
 
         find_weather();
+
+        Button info_button = findViewById(R.id.useful_info_button);
+
+        info_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openUsefulInfoActivity();
+            }
+        });
+
+
+
+    }
+
+    private void openUsefulInfoActivity() {
+        Intent intent = new Intent(this, UsefulInfoActivity.class);
+        startActivity(intent);
     }
 
     public void find_weather() {
