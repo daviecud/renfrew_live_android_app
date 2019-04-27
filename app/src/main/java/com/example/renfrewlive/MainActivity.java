@@ -12,9 +12,14 @@ import org.json.JSONObject;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.view.View;
+import android.support.v7.widget.Toolbar;
 
 
 import java.text.DateFormat;
@@ -29,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         date = findViewById(R.id.date);
         time = findViewById(R.id.time);
@@ -55,8 +63,69 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button business_button = findViewById(R.id.business_button);
+
+        business_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openBusinessActivity();
+            }
+        });
+
+        Button test_button = findViewById(R.id.practice_button);
+
+        test_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openTestActivity();
+            }
+        });
 
 
+
+    }
+
+    private void openTestActivity() {
+        Intent intent = new Intent(this, LostFoundActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.selection_sort, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //this is to handle selection of an item in the menu
+        switch (item.getItemId()) {
+            case R.id.Local_Services:
+                Intent intent = new Intent(this, UsefulInfoActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.Local_Business:
+                Intent bus_intent = new Intent(this, Local_BusinessActivity.class);
+                startActivity(bus_intent);
+                return true;
+
+            case R.id.Lost_Found:
+                Intent lostIntent = new Intent(this, LostFoundActivity.class);
+                startActivity(lostIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+
+
+    private void openBusinessActivity() {
+        Intent intent = new Intent(this, Local_BusinessActivity.class);
+        startActivity(intent);
     }
 
     private void openUsefulInfoActivity() {

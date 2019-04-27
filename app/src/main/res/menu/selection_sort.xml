@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/Local-Services"
+        android:enabled="true"
+        android:title="Services"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Local-Business"
+        android:enabled="true"
+        android:title="Business"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Crime"
+        android:enabled="true"
+        android:title="Crime"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Lost_Found"
+        android:enabled="true"
+        android:title="Lost and Found"
+        app:showAsAction="never"
+        />
+
+
+    <item
+        android:id="@+id/Settings"
+        android:enabled="true"
+        android:title="Settings"
+        app:showAsAction="never"
+        />
+
+</menu>

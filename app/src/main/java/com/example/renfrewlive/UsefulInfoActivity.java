@@ -63,6 +63,16 @@ public class UsefulInfoActivity extends AppCompatActivity {
                         "Public Baths",
                         R.drawable.baths));
 
+        infoList.add(
+                        new InfoDetails(
+                                1,
+                                "Town Hall & Museum",
+                                "Renfrew Town Hall and Museum, Hairst St, Renfrew PA4 8PF",
+                                "0300 300 1210",
+                                "Local Town hall and museum",
+                                R.drawable.town_hall
+                ));
+
         adapter = new InfoAdapter(this, infoList);
         recyclerView.setAdapter(adapter);
     }

@@ -40,7 +40,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.InfoViewHolder
         holder.textViewTel.setText(info.getInfo_tel());
         holder.textViewSummary.setText(info.getInfo_summary());
 
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(info.getImage(), null));
+//        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(info.getImage(), null));
     }
 
     @Override
