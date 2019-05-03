@@ -1,9 +1,14 @@
 package com.example.renfrewlive;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +24,9 @@ public class UsefulInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_useful_info);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         infoList = new ArrayList<>();
 
@@ -70,10 +78,40 @@ public class UsefulInfoActivity extends AppCompatActivity {
                                 "Renfrew Town Hall and Museum, Hairst St, Renfrew PA4 8PF",
                                 "0300 300 1210",
                                 "Local Town hall and museum",
-                                R.drawable.town_hall
-                ));
+                                R.drawable.town_hall));
 
         adapter = new InfoAdapter(this, infoList);
         recyclerView.setAdapter(adapter);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.selection_sort, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //this is to handle selection of an item in the menu
+        switch (item.getItemId()) {
+            case R.id.Local_Services:
+                Intent intent = new Intent(this, UsefulInfoActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.Local_Business:
+                Intent bus_intent = new Intent(this, BusinessActivity.class);
+                startActivity(bus_intent);
+                return true;
+
+            case R.id.Lost_Found:
+                Intent lostIntent = new Intent(this, LostFoundActivity.class);
+                startActivity(lostIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }

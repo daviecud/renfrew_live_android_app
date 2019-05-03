@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.view.View;
@@ -48,47 +49,43 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         String currentTime = "Time: " + format.format(calendar.getTime());
 
+        ImageView imageView = findViewById(R.id.daynightview);
+
+        calendar.setTimeInMillis(System.currentTimeMillis());
+
+        calendar.set(Calendar.HOUR_OF_DAY, 3);
+        calendar.set(Calendar.MINUTE, 00);
+        calendar.set(Calendar.SECOND, 0);
+
+        long noon_start = calendar.getTimeInMillis();
+
+        calendar.set(Calendar.HOUR_OF_DAY, 5);
+        calendar.set(Calendar.MINUTE, 30);
+
+        long noon_end = calendar.getTimeInMillis();
+        long current_time = System.currentTimeMillis();
+
+        if (current_time > noon_start && current_time < noon_end) {
+            imageView.setImageResource(R.drawable.daytownhall);
+        } else {
+            imageView.setImageResource(R.drawable.townhall);
+        }
+
+
         time.setText(currentTime);
 
         date.setText(currentDate);
 
         find_weather();
 
-        Button info_button = findViewById(R.id.useful_info_button);
 
-        info_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openUsefulInfoActivity();
-            }
-        });
 
-        Button business_button = findViewById(R.id.business_button);
 
-        business_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openBusinessActivity();
-            }
-        });
-
-        Button test_button = findViewById(R.id.practice_button);
-
-        test_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTestActivity();
-            }
-        });
 
 
 
     }
 
-    private void openTestActivity() {
-        Intent intent = new Intent(this, LostFoundActivity.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -107,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             case R.id.Local_Business:
-                Intent bus_intent = new Intent(this, Local_BusinessActivity.class);
+                Intent bus_intent = new Intent(this, BusinessActivity.class);
                 startActivity(bus_intent);
                 return true;
 
@@ -124,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void openBusinessActivity() {
-        Intent intent = new Intent(this, Local_BusinessActivity.class);
+        Intent intent = new Intent(this, BusinessActivity.class);
         startActivity(intent);
     }
 

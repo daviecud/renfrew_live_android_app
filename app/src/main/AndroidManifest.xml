@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".LostFoundActivity"></activity>
-        <activity android:name=".Local_BusinessActivity" />
         <activity android:name=".BusinessActivity" />
         <activity android:name=".UsefulInfoActivity" />
         <activity android:name=".MainActivity">
