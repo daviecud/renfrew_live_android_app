@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat format = new SimpleDateFormat("HH:mm");
         String currentTime = "Time: " + format.format(calendar.getTime());
 
-        ImageView imageView = findViewById(R.id.daynightview);
+//        ImageView imageView = findViewById(R.id.daynightview);
 
         calendar.setTimeInMillis(System.currentTimeMillis());
 
@@ -65,25 +65,19 @@ public class MainActivity extends AppCompatActivity {
         long noon_end = calendar.getTimeInMillis();
         long current_time = System.currentTimeMillis();
 
-        if (current_time > noon_start && current_time < noon_end) {
-            imageView.setImageResource(R.drawable.daytownhall);
-        } else {
-            imageView.setImageResource(R.drawable.townhall);
-        }
-
+/*
+if (current_time > noon_start && current_time < noon_end) {
+imageView.setImageResource(R.drawable.daytownhall);
+} else {
+imageView.setImageResource(R.drawable.townhall);
+}
+*/
 
         time.setText(currentTime);
 
         date.setText(currentDate);
 
         find_weather();
-
-
-
-
-
-
-
     }
 
 
