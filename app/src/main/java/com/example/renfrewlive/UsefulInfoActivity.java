@@ -109,6 +109,11 @@ public class UsefulInfoActivity extends AppCompatActivity {
                 Intent lostIntent = new Intent(this, LostFoundActivity.class);
                 startActivity(lostIntent);
                 return true;
+
+            case R.id.Scratch:
+                Intent scratchIntent = new Intent(this, ScratchActivity.class);
+                startActivity(scratchIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 

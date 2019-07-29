@@ -106,13 +106,15 @@ imageView.setImageResource(R.drawable.townhall);
                 Intent lostIntent = new Intent(this, LostFoundActivity.class);
                 startActivity(lostIntent);
                 return true;
+            case R.id.Scratch:
+                Intent scratchIntent = new Intent(this, ScratchActivity.class);
+                startActivity(scratchIntent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
 
         }
     }
-
-
 
     private void openBusinessActivity() {
         Intent intent = new Intent(this, BusinessActivity.class);

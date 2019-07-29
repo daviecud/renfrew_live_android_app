@@ -17,9 +17,9 @@
         />
 
     <item
-        android:id="@+id/Crime"
+        android:id="@+id/Scratch"
         android:enabled="true"
-        android:title="Crime"
+        android:title="Scratch Card"
         app:showAsAction="never"
         />
 
@@ -27,6 +27,13 @@
         android:id="@+id/Lost_Found"
         android:enabled="true"
         android:title="Lost and Found"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/History"
+        android:enabled="true"
+        android:title="Renfrew History"
         app:showAsAction="never"
         />
 

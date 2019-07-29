@@ -1,11 +1,15 @@
 package com.example.renfrewlive;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +38,12 @@ public class BusinessActivity extends AppCompatActivity {
 
         businessList.add(
                 new BusinessDetails(
-                    1,
-                    "AGM Aerials",
-                    "Lang Avenue, Renfrew, PA4 0ZZ",
-                    "0759 000 2144",
-                    "www.agm-aerials.com",
-                    "Services include: Aerial/Satellite, CCTV, Alarms, TV Mounting",
+                        1,
+                        "AGM Aerials",
+                        "Lang Avenue, Renfrew, PA4 0ZZ",
+                        "0759 000 2144",
+                        "www.agm-aerials.com",
+                        "Services include: Aerial/Satellite, CCTV, Alarms, TV Mounting",
                         R.drawable.agm
                 ));
 
@@ -65,9 +69,45 @@ public class BusinessActivity extends AppCompatActivity {
                         R.drawable.bull
                 ));
 
-    Log.d("businessList", "businessList");
+        Log.d("businessList", "businessList");
 
         adapter = new BusinessAdapter(this, businessList);
         recyclerView.setAdapter(adapter);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.selection_sort, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //this is to handle selection of an item in the menu
+        switch (item.getItemId()) {
+            case R.id.Local_Services:
+                Intent intent = new Intent(this, UsefulInfoActivity.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.Local_Business:
+                Intent bus_intent = new Intent(this, BusinessActivity.class);
+                startActivity(bus_intent);
+                return true;
+
+            case R.id.Lost_Found:
+                Intent lostIntent = new Intent(this, LostFoundActivity.class);
+                startActivity(lostIntent);
+                return true;
+            case R.id.Scratch:
+                Intent scratchIntent = new Intent(this, ScratchActivity.class);
+                startActivity(scratchIntent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 }
