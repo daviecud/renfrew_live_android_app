@@ -20,13 +20,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@color/white"
-        android:src="@drawable/daytownhall"
+        android:src="@drawable/face"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/scratchHeading"
         android:layout_width="195dp"
         android:layout_height="82dp"
         android:layout_marginTop="8dp"
