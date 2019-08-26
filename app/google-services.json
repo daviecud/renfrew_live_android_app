@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "881375045755",
+    "firebase_url": "https://renfrew-live.firebaseio.com",
+    "project_id": "renfrew-live",
+    "storage_bucket": "renfrew-live.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881375045755:android:ded53979cdfff6dc",
+        "android_client_info": {
+          "package_name": "com.example.renfrewlive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "881375045755-t2kaprt2253l6s05comovvg4r6luu8ie.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3iouNfObZTs6nlx3PNOrwY3Jrt-S75TM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "881375045755-t2kaprt2253l6s05comovvg4r6luu8ie.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
