@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "881375045755-55165jigov66779r4v5s5ba317n6b505.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.renfrewlive",
+            "certificate_hash": "ef99331c3f0376ff7aae87d9e2b0d50a60fdffcb"
+          }
+        },
+        {
           "client_id": "881375045755-t2kaprt2253l6s05comovvg4r6luu8ie.apps.googleusercontent.com",
           "client_type": 3
         }

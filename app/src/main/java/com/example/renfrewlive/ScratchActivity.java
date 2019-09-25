@@ -44,6 +44,10 @@ public class ScratchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //this is to handle selection of an item in the menu
         switch (item.getItemId()) {
+            case R.id.Home:
+                Intent home_intent = new Intent(this, MainActivity.class);
+                startActivity(home_intent);
+                return true;
             case R.id.Local_Services:
                 Intent intent = new Intent(this, UsefulInfoActivity.class);
                 startActivity(intent);
@@ -61,6 +65,10 @@ public class ScratchActivity extends AppCompatActivity {
             case R.id.Scratch:
                 Intent scratchIntent = new Intent(this, ScratchActivity.class);
                 startActivity(scratchIntent);
+                return true;
+            case R.id.Notes:
+                Intent notesIntent = new Intent(this, DataActivity.class);
+                startActivity(notesIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

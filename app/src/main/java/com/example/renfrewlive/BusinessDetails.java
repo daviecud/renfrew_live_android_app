@@ -6,6 +6,10 @@ public class BusinessDetails {
     private String bus_name, bus_address, bus_tel, bus_web, bus_summary;
     private int bus_image;
 
+    public BusinessDetails() {
+        //This empty constructor is needed for Firestore's automatic data mapping, DO Not Delete
+    }
+
     public BusinessDetails(int id, String bus_name, String bus_address, String bus_tel, String bus_web, String bus_summary, int bus_image) {
         this.id = id;
         this.bus_name = bus_name;

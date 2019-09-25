@@ -9,6 +9,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /*
@@ -16,19 +21,56 @@ import java.util.List;
 * RecyclerViewHolder.ViewHolder - this holds the view from card.xml
 * */
 
-public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.BusinessViewHolder>{
+public class BusinessAdapter extends FirestoreRecyclerAdapter<BusinessDetails, BusinessAdapter.BusinessHolder> {
 
+    /**
+     * Create a new RecyclerView adapter that listens to a Firestore Query.  See {@link
+     * FirestoreRecyclerOptions} for configuration options.
+     *
+     * @param options
+     */
+    public BusinessAdapter(@NonNull FirestoreRecyclerOptions<BusinessDetails> options) {
+        super(options);
+    }
 
-    private Context context; //to inflate layout file to class BusinessViewHolder
+    @Override
+    protected void onBindViewHolder(@NonNull BusinessHolder holder, int position, @NonNull BusinessDetails model) {
+        holder.textViewBusName.setText(model.getBus_name());
+        holder.textViewBusAdd.setText(model.getBus_address());
+        holder.textViewBusTel.setText(model.getBus_tel());
+        holder.textViewBusWeb.setText(model.getBus_summary());
+        holder.textViewBusSummary.setText(model.getBus_summary());
 
-    private List<BusinessDetails> businessList; //List of details from BusinessDetails
+    }
 
-    public BusinessAdapter(Context context, List<BusinessDetails> businessList) {
-        this.context = context;
-        this.businessList = businessList;
+    @NonNull
+    @Override
+    public BusinessHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.business_card, parent, false);
+        return new BusinessHolder(v);
     }
 
 
+    class BusinessHolder extends RecyclerView.ViewHolder {
+
+        TextView textViewBusName;
+        TextView textViewBusAdd;
+        TextView textViewBusTel;
+        TextView textViewBusWeb;
+        TextView textViewBusSummary;
+
+        public BusinessHolder(@NonNull View itemView) {
+            super(itemView);
+            textViewBusName = itemView.findViewById(R.id.bus_name);
+            textViewBusAdd = itemView.findViewById(R.id.bus_address);
+            textViewBusTel = itemView.findViewById(R.id.bus_tel);
+            textViewBusWeb = itemView.findViewById(R.id.bus_web);
+            textViewBusSummary = itemView.findViewById(R.id.bus_summary);
+        }
+    }
+}
+
+/*
     @Override //this will create a Viewholder from an instance of class BusinessViewHolder (below) UI elements
     public BusinessViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -72,6 +114,4 @@ public class BusinessAdapter extends RecyclerView.Adapter<BusinessAdapter.Busine
             textViewBusWeb = itemView.findViewById(R.id.bus_web);
             textViewSummary = itemView.findViewById(R.id.bus_summary);
         }
-    }
-
-}
+    }*/

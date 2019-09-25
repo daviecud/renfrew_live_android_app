@@ -3,14 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/Local-Services"
+        android:id="@+id/Home"
+        android:enabled="true"
+        android:title="Home"
+        app:showAsAction="never"
+        />
+
+    <item
+        android:id="@+id/Local_Services"
         android:enabled="true"
         android:title="Services"
         app:showAsAction="never"
         />
 
     <item
-        android:id="@+id/Local-Business"
+        android:id="@+id/Local_Business"
         android:enabled="true"
         android:title="Business"
         app:showAsAction="never"
@@ -36,12 +43,16 @@
         android:title="Renfrew History"
         app:showAsAction="never"
         />
-
-
     <item
         android:id="@+id/Settings"
         android:enabled="true"
         android:title="Settings"
+        app:showAsAction="never"
+        />
+    <item
+        android:id="@+id/Notes"
+        android:enabled="true"
+        android:title="Notes"
         app:showAsAction="never"
         />
 

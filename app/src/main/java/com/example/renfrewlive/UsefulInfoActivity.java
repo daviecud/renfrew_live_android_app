@@ -1,17 +1,30 @@
 package com.example.renfrewlive;
 
 import android.content.Intent;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static com.example.renfrewlive.R.id.Local_Services;
 
 public class UsefulInfoActivity extends AppCompatActivity {
 
@@ -19,6 +32,8 @@ public class UsefulInfoActivity extends AppCompatActivity {
     InfoAdapter adapter;
 
     List<InfoDetails> infoList;
+
+    private static final String TAG = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,10 +45,35 @@ public class UsefulInfoActivity extends AppCompatActivity {
 
         infoList = new ArrayList<>();
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
         recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        Map<String, Object> service = new HashMap<>();
+        service.put("name", "Renfrew High School");
+        service.put("address", "Haining Road");
+        service.put("town", "Renfrew");
+        service.put("postcode", "PA4 0AN");
+        service.put("telephone", "0330 300 1414");
+        service.put("web", "www.renfrewhighschool.com");
+
+        db.collection("Local_Services")
+                .add(service)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    Log.w(TAG, "Error adding document", e);
+                    }
+                });
 
         infoList.add(
                 new InfoDetails (
@@ -95,6 +135,10 @@ public class UsefulInfoActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         //this is to handle selection of an item in the menu
         switch (item.getItemId()) {
+            case R.id.Home:
+                Intent home_intent = new Intent(this, MainActivity.class);
+                startActivity(home_intent);
+                return true;
             case R.id.Local_Services:
                 Intent intent = new Intent(this, UsefulInfoActivity.class);
                 startActivity(intent);
@@ -113,6 +157,10 @@ public class UsefulInfoActivity extends AppCompatActivity {
             case R.id.Scratch:
                 Intent scratchIntent = new Intent(this, ScratchActivity.class);
                 startActivity(scratchIntent);
+                return true;
+            case R.id.Notes:
+                Intent notesIntent = new Intent(this, DataActivity.class);
+                startActivity(notesIntent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
